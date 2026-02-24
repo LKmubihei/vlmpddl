@@ -1,0 +1,3 @@
+blue_battery
+red_battery
+green_battery

@@ -1,0 +1,3 @@
+blue_sensor
+blue_regulator
+green_regulator

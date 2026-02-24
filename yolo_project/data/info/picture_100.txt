@@ -1,0 +1,5 @@
+blue_pump
+blue_battery
+green_battery
+green_regulator
+red_pump

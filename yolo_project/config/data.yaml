@@ -1,0 +1,18 @@
+# Dataset Configuration
+path: ../data  # dataset root dir
+train: images  # train images (relative to 'path')
+val: images    # val images (relative to 'path')
+test:          # test images (optional)
+
+# Classes
+nc: 9
+names:
+  0: green_regulator
+  1: red_regulator
+  2: blue_battery
+  3: blue_pump
+  4: red_pump
+  5: green_pump
+  6: green_battery
+  7: red_battery
+  8: blue_regulator

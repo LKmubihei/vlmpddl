@@ -1,0 +1,3 @@
+red_battery
+green_sensor
+blue_battery

@@ -1,0 +1,4 @@
+blue_battery
+red_pump
+blue_battery_1
+red_pump_1

@@ -1,0 +1,981 @@
+INFO:__main__:Found 25 test images in /data/public/real_ariac/data_test/fault_placement
+Planning problems:   0%|                                                                                                                                                                    | 0/25 [00:00<?, ?it/s]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_1.jpg
+INFO:__main__:Goal: assembly red_battery to the ventilator , assembly green_pump to the ventilator and assembly green_regulator to the ventilator
+(define (problem picture_1)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        red_battery green_pump green_regulator - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear green_pump)
+        (clear red_battery)
+        (clear green_regulator)
+        (part_at green_pump table)
+        (part_at green_regulator table)
+        (part_at red_battery buffer_placement)
+    )
+    
+    (:goal
+(and
+            (part_at red_battery battery_placement)
+            (part_at green_pump pump_placement)
+            (part_at green_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['red_battery', 'green_pump', 'green_regulator']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'red_battery', 'battery_placement')
+  2. ('assemble', 'green_pump', 'pump_placement')
+  3. ('assemble', 'green_regulator', 'regulator_placement')
+
+规划的结果:  [('moveto', 'table', 'buffer_placement'), ('pick', 'red_battery', 'buffer_placement'), ('moveto', 'buffer_placement', 'battery_placement'), ('place', 'red_battery', 'battery_placement'), ('moveto', 'battery_placement', 'table'), ('pick', 'green_pump', 'table'), ('moveto', 'table', 'pump_placement'), ('place', 'green_pump', 'pump_placement'), ('moveto', 'pump_placement', 'table'), ('pick', 'green_regulator', 'table'), ('moveto', 'table', 'regulator_placement'), ('place', 'green_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_1.jpg: Planning successful
+Planning problems:   4%|██████▏                                                                                                                                                     | 1/25 [00:06<02:44,  6.84s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_10.jpg
+INFO:__main__:Goal: assembly blue_battery to the ventilator
+(define (problem picture_10)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        blue_battery green_battery blue_regulator red_pump - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear blue_battery)
+        (clear green_battery)
+        (clear blue_regulator)
+        (clear red_pump)
+        (part_at green_battery table)
+        (part_at blue_regulator regulator_placement)
+        (part_at blue_battery buffer_placement)
+        (part_at red_pump pump_placement)
+    )
+    
+    (:goal
+(and
+            (part_at blue_battery battery_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['blue_battery', 'green_battery', 'blue_regulator', 'red_pump']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'blue_battery', 'battery_placement')
+
+规划的结果:  [('moveto', 'table', 'buffer_placement'), ('pick', 'blue_battery', 'buffer_placement'), ('moveto', 'buffer_placement', 'battery_placement'), ('place', 'blue_battery', 'battery_placement')]
+INFO:__main__:✓ picture_10.jpg: Planning successful
+Planning problems:   8%|████████████▍                                                                                                                                               | 2/25 [00:13<02:28,  6.48s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_11.jpg
+INFO:__main__:Goal: assembly red_pump to the ventilator and assembly green_regulator to the ventilator
+(define (problem picture_11)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        blue_battery red_pump green_regulator green_pump - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear green_regulator)
+        (clear green_pump)
+        (clear blue_battery)
+        (clear red_pump)
+        (part_at green_pump table)
+        (part_at green_regulator table)
+        (part_at blue_battery battery_placement)
+        (part_at red_pump buffer_placement)
+    )
+    
+    (:goal
+(and
+            (part_at red_pump pump_placement)
+            (part_at green_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['blue_battery', 'red_pump', 'green_regulator', 'green_pump']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'red_pump', 'pump_placement')
+  2. ('assemble', 'green_regulator', 'regulator_placement')
+
+规划的结果:  [('moveto', 'table', 'buffer_placement'), ('pick', 'red_pump', 'buffer_placement'), ('moveto', 'buffer_placement', 'pump_placement'), ('place', 'red_pump', 'pump_placement'), ('moveto', 'pump_placement', 'table'), ('pick', 'green_regulator', 'table'), ('moveto', 'table', 'regulator_placement'), ('place', 'green_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_11.jpg: Planning successful
+Planning problems:  12%|██████████████████▋                                                                                                                                         | 3/25 [00:19<02:25,  6.60s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_12.jpg
+INFO:__main__:Goal: assembly green_pump to the ventilator and assembly green_regulator to the ventilator
+(define (problem picture_12)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        blue_battery red_pump green_pump green_regulator - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear green_pump)
+        (clear blue_battery)
+        (clear green_regulator)
+        (clear red_pump)
+        (part_at green_pump table)
+        (part_at green_regulator table)
+        (part_at blue_battery battery_placement)
+        (part_at red_pump buffer_placement)
+    )
+    
+    (:goal
+(and
+            (part_at green_pump pump_placement)
+            (part_at green_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['blue_battery', 'red_pump', 'green_pump', 'green_regulator']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'green_pump', 'pump_placement')
+  2. ('assemble', 'green_regulator', 'regulator_placement')
+
+规划的结果:  [('moveto', 'table', 'buffer_placement'), ('pick', 'red_pump', 'buffer_placement'), ('moveto', 'buffer_placement', 'pump_placement'), ('place', 'red_pump', 'pump_placement'), ('moveto', 'pump_placement', 'table'), ('pick', 'green_regulator', 'table'), ('moveto', 'table', 'regulator_placement'), ('place', 'green_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_12.jpg: Planning successful
+Planning problems:  16%|████████████████████████▉                                                                                                                                   | 4/25 [00:26<02:19,  6.65s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_13.jpg
+INFO:__main__:Goal: assembly green_pump to the ventilator and assembly green_regulator to the ventilator
+(define (problem picture_13)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        green_regulator_1 green_pump_1 - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear green_pump_1)
+        (clear green_regulator_1)
+        (part_at green_pump_1 table)
+        (part_at green_regulator_1 table)
+    )
+    
+    (:goal
+(and
+            (part_at green_pump_1 pump_placement)
+            (part_at green_regulator_1 regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['green_regulator_1', 'green_pump_1']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'green_pump_1', 'pump_placement')
+  2. ('assemble', 'green_regulator_1', 'regulator_placement')
+
+规划的结果:  [('pick', 'green_pump_1', 'table'), ('moveto', 'table', 'pump_placement'), ('place', 'green_pump_1', 'pump_placement'), ('moveto', 'pump_placement', 'table'), ('pick', 'green_regulator_1', 'table'), ('moveto', 'table', 'regulator_placement'), ('place', 'green_regulator_1', 'regulator_placement')]
+INFO:__main__:✓ picture_13.jpg: Planning successful
+ERROR:__main__:picture_13.jpg: init中缺少了 1 条涉及目标物体的事实 —— 说明该识别中，目标物体存在误检/漏检。
+Planning problems:  20%|███████████████████████████████▏                                                                                                                            | 5/25 [00:32<02:07,  6.36s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_14.jpg
+INFO:__main__:Goal: assembly blue_battery to the ventilator , assembly green_pump to the ventilator and assembly green_regulator to the ventilator
+(define (problem picture_14)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        blue_battery green_pump green_regulator - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear green_pump)
+        (clear blue_battery)
+        (clear green_regulator)
+        (part_at green_pump table)
+        (part_at green_regulator buffer_placement)
+        (part_at blue_battery table)
+    )
+    
+    (:goal
+(and
+            (part_at blue_battery battery_placement)
+            (part_at green_pump pump_placement)
+            (part_at green_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['blue_battery', 'green_pump', 'green_regulator']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'blue_battery', 'battery_placement')
+  2. ('assemble', 'green_pump', 'pump_placement')
+  3. ('assemble', 'green_regulator', 'regulator_placement')
+
+规划的结果:  [('pick', 'blue_battery', 'table'), ('moveto', 'table', 'battery_placement'), ('place', 'blue_battery', 'battery_placement'), ('moveto', 'battery_placement', 'table'), ('pick', 'green_pump', 'table'), ('moveto', 'table', 'pump_placement'), ('place', 'green_pump', 'pump_placement'), ('moveto', 'pump_placement', 'buffer_placement'), ('pick', 'green_regulator', 'buffer_placement'), ('moveto', 'buffer_placement', 'regulator_placement'), ('place', 'green_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_14.jpg: Planning successful
+Planning problems:  24%|█████████████████████████████████████▍                                                                                                                      | 6/25 [00:38<02:00,  6.33s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_15.jpg
+INFO:__main__:Goal: assembly red_pump to the ventilator and assembly red_regulator to the ventilator
+(define (problem picture_15)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        red_battery blue_battery red_regulator red_pump - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear red_battery)
+        (clear blue_battery)
+        (clear red_regulator)
+        (clear red_pump)
+        (part_at red_pump table)
+        (part_at red_battery buffer_placement)
+        (part_at blue_battery battery_placement)
+        (part_at red_regulator table)
+    )
+    
+    (:goal
+(and
+            (part_at red_pump pump_placement)
+            (part_at red_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['red_battery', 'blue_battery', 'red_regulator', 'red_pump']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'red_pump', 'pump_placement')
+  2. ('assemble', 'red_regulator', 'regulator_placement')
+
+规划的结果:  [('pick', 'red_pump', 'table'), ('moveto', 'table', 'pump_placement'), ('place', 'red_pump', 'pump_placement'), ('moveto', 'pump_placement', 'table'), ('pick', 'red_regulator', 'table'), ('moveto', 'table', 'regulator_placement'), ('place', 'red_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_15.jpg: Planning successful
+ERROR:__main__:picture_15.jpg: init中增加了 1 条涉及目标物体的事实, init中缺少了 1 条涉及目标物体的事实 —— 说明该识别中，目标物体存在误检/漏检。
+Planning problems:  28%|███████████████████████████████████████████▋                                                                                                                | 7/25 [00:45<01:55,  6.41s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_16.jpg
+INFO:__main__:Goal: assembly red_pump to the ventilator and assembly green_regulator to the ventilator
+(define (problem picture_16)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        red_pump green_regulator blue_pump - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear red_pump)
+        (clear green_regulator)
+        (clear blue_pump)
+        (part_at red_pump table)
+        (part_at blue_pump table)
+        (part_at green_regulator buffer_placement)
+    )
+    
+    (:goal
+(and
+            (part_at red_pump pump_placement)
+            (part_at green_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['red_pump', 'green_regulator', 'blue_pump']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'red_pump', 'pump_placement')
+  2. ('assemble', 'green_regulator', 'regulator_placement')
+
+规划的结果:  [('pick', 'red_pump', 'table'), ('moveto', 'table', 'pump_placement'), ('place', 'red_pump', 'pump_placement'), ('moveto', 'pump_placement', 'buffer_placement'), ('pick', 'green_regulator', 'buffer_placement'), ('moveto', 'buffer_placement', 'regulator_placement'), ('place', 'green_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_16.jpg: Planning successful
+Planning problems:  32%|█████████████████████████████████████████████████▉                                                                                                          | 8/25 [00:51<01:46,  6.24s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_17.jpg
+INFO:__main__:Goal: assembly red_pump to the ventilator and assembly red_regulator to the ventilator
+(define (problem picture_17)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        red_battery blue_battery red_regulator red_pump - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear red_battery)
+        (clear blue_battery)
+        (clear red_regulator)
+        (clear red_pump)
+        (part_at red_pump table)
+        (part_at red_battery buffer_placement)
+        (part_at blue_battery battery_placement)
+        (part_at red_regulator table)
+    )
+    
+    (:goal
+(and
+            (part_at red_pump pump_placement)
+            (part_at red_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['red_battery', 'blue_battery', 'red_regulator', 'red_pump']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'red_pump', 'pump_placement')
+  2. ('assemble', 'red_regulator', 'regulator_placement')
+
+规划的结果:  [('pick', 'red_pump', 'table'), ('moveto', 'table', 'pump_placement'), ('place', 'red_pump', 'pump_placement'), ('moveto', 'pump_placement', 'table'), ('pick', 'red_regulator', 'table'), ('moveto', 'table', 'regulator_placement'), ('place', 'red_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_17.jpg: Planning successful
+Planning problems:  36%|████████████████████████████████████████████████████████▏                                                                                                   | 9/25 [00:57<01:41,  6.35s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_18.jpg
+INFO:__main__:Goal: assembly green_regulator to the ventilator
+(define (problem picture_18)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        blue_pump green_regulator - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear blue_pump)
+        (clear green_regulator)
+        (part_at blue_pump table)
+        (part_at green_regulator buffer_placement)
+    )
+    
+    (:goal
+(and
+            (part_at green_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['blue_pump', 'green_regulator']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'green_regulator', 'regulator_placement')
+
+规划的结果:  [('moveto', 'table', 'buffer_placement'), ('pick', 'green_regulator', 'buffer_placement'), ('moveto', 'buffer_placement', 'regulator_placement'), ('place', 'green_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_18.jpg: Planning successful
+Planning problems:  40%|██████████████████████████████████████████████████████████████                                                                                             | 10/25 [01:02<01:27,  5.80s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_19.jpg
+INFO:__main__:Goal: assembly red_pump to the ventilator
+(define (problem picture_19)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        blue_battery red_pump blue_battery_2 red_battery - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear red_pump)
+        (clear blue_battery)
+        (clear blue_battery_2)
+        (clear red_battery)
+        (part_at red_pump table)
+        (part_at blue_battery battery_placement)
+        (part_at blue_battery_2 table)
+        (part_at red_battery table)
+    )
+    
+    (:goal
+(and
+            (part_at red_pump pump_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['blue_battery', 'red_pump', 'blue_battery_2', 'red_battery']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'red_pump', 'pump_placement')
+
+规划的结果:  [('pick', 'red_pump', 'table'), ('moveto', 'table', 'pump_placement'), ('place', 'red_pump', 'pump_placement')]
+INFO:__main__:✓ picture_19.jpg: Planning successful
+ERROR:__main__:picture_19.jpg: init中缺少了 1 条涉及目标物体的事实 —— 说明该识别中，目标物体存在误检/漏检。
+Planning problems:  44%|████████████████████████████████████████████████████████████████████▏                                                                                      | 11/25 [01:08<01:22,  5.91s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_2.jpg
+INFO:__main__:Goal: assembly red_pump to the ventilator and assembly green_regulator to the ventilator
+(define (problem picture_2)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        red_battery  red_pump green_regulator  - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear red_battery)
+        (clear red_pump)
+        (clear green_regulator)
+        (part_at red_pump table)
+        (part_at green_regulator buffer_placement)
+        (part_at red_battery battery_placement)
+    )
+    
+    (:goal
+(and
+            (part_at red_pump pump_placement)
+            (part_at green_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['red_battery', 'red_pump', 'green_regulator']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'red_pump', 'pump_placement')
+  2. ('assemble', 'green_regulator', 'regulator_placement')
+
+规划的结果:  [('pick', 'red_pump', 'table'), ('moveto', 'table', 'pump_placement'), ('place', 'red_pump', 'pump_placement'), ('moveto', 'pump_placement', 'buffer_placement'), ('pick', 'green_regulator', 'buffer_placement'), ('moveto', 'buffer_placement', 'regulator_placement'), ('place', 'green_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_2.jpg: Planning successful
+Planning problems:  48%|██████████████████████████████████████████████████████████████████████████▍                                                                                | 12/25 [01:14<01:16,  5.91s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_20.jpg
+INFO:__main__:Goal: assembly green_pump to the ventilator and assembly green_regulator to the ventilator
+(define (problem picture_20)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        blue_battery green_battery green_pump green_regulator - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear blue_battery)
+        (clear green_battery)
+        (clear green_pump)
+        (clear green_regulator)
+        (part_at green_pump table)
+        (part_at blue_battery table)
+        (part_at green_battery buffer_placement)
+        (part_at green_regulator buffer_placement)
+    )
+    
+    (:goal
+(and
+            (part_at green_pump pump_placement)
+            (part_at green_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['blue_battery', 'green_battery', 'green_pump', 'green_regulator']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'green_pump', 'pump_placement')
+  2. ('assemble', 'green_regulator', 'regulator_placement')
+
+规划的结果:  [('pick', 'green_pump', 'table'), ('moveto', 'table', 'pump_placement'), ('place', 'green_pump', 'pump_placement'), ('moveto', 'pump_placement', 'buffer_placement'), ('pick', 'green_regulator', 'buffer_placement'), ('moveto', 'buffer_placement', 'regulator_placement'), ('place', 'green_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_20.jpg: Planning successful
+Planning problems:  52%|████████████████████████████████████████████████████████████████████████████████▌                                                                          | 13/25 [01:20<01:12,  6.07s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_21.jpg
+INFO:__main__:Goal: assembly red_pump to the ventilator and assembly green_regulator to the ventilator
+(define (problem picture_21)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        red_pump green_regulator blue_battery orange_battery - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear green_regulator)
+        (clear red_pump)
+        (clear blue_battery)
+        (clear orange_battery)
+        (part_at green_regulator table)
+        (part_at red_pump buffer_placement)
+        (part_at blue_battery battery_placement)
+        (part_at orange_battery battery_placement)
+    )
+    
+    (:goal
+(and
+            (part_at red_pump pump_placement)
+            (part_at green_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['red_pump', 'green_regulator', 'blue_battery', 'orange_battery']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'red_pump', 'pump_placement')
+  2. ('assemble', 'green_regulator', 'regulator_placement')
+
+规划的结果:  [('moveto', 'table', 'buffer_placement'), ('pick', 'red_pump', 'buffer_placement'), ('moveto', 'buffer_placement', 'pump_placement'), ('place', 'red_pump', 'pump_placement'), ('moveto', 'pump_placement', 'table'), ('pick', 'green_regulator', 'table'), ('moveto', 'table', 'regulator_placement'), ('place', 'green_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_21.jpg: Planning successful
+Planning problems:  56%|██████████████████████████████████████████████████████████████████████████████████████▊                                                                    | 14/25 [01:27<01:08,  6.24s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_22.jpg
+INFO:__main__:Goal: assembly green_regulator to the ventilator
+(define (problem picture_22)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        blue_pump green_regulator - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear blue_pump)
+        (clear green_regulator)
+        (part_at blue_pump table)
+        (part_at green_regulator buffer_placement)
+    )
+    
+    (:goal
+(and
+            (part_at green_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['blue_pump', 'green_regulator']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'green_regulator', 'regulator_placement')
+
+规划的结果:  [('moveto', 'table', 'buffer_placement'), ('pick', 'green_regulator', 'buffer_placement'), ('moveto', 'buffer_placement', 'regulator_placement'), ('place', 'green_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_22.jpg: Planning successful
+Planning problems:  60%|█████████████████████████████████████████████████████████████████████████████████████████████                                                              | 15/25 [01:32<00:57,  5.77s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_23.jpg
+INFO:__main__:Goal: assembly blue_battery to the ventilator ,assembly green_pump to the ventilator and assembly green_regulator to the ventilator
+(define (problem picture_23)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        blue_battery green_pump green_regulator - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear green_pump)
+        (clear blue_battery)
+        (clear green_regulator)
+        (part_at green_pump table)
+        (part_at green_regulator table)
+        (part_at blue_battery buffer_placement)
+    )
+    
+    (:goal
+(and
+            (part_at green_pump pump_placement)
+            (part_at green_regulator regulator_placement)
+            (part_at blue_battery battery_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['blue_battery', 'green_pump', 'green_regulator']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'green_pump', 'pump_placement')
+  2. ('assemble', 'green_regulator', 'regulator_placement')
+  3. ('assemble', 'blue_battery', 'battery_placement')
+
+规划的结果:  [('pick', 'green_pump', 'table'), ('moveto', 'table', 'pump_placement'), ('place', 'green_pump', 'pump_placement'), ('moveto', 'pump_placement', 'table'), ('pick', 'green_regulator', 'table'), ('moveto', 'table', 'regulator_placement'), ('place', 'green_regulator', 'regulator_placement'), ('moveto', 'regulator_placement', 'buffer_placement'), ('pick', 'blue_battery', 'buffer_placement'), ('moveto', 'buffer_placement', 'battery_placement'), ('place', 'blue_battery', 'battery_placement')]
+INFO:__main__:✓ picture_23.jpg: Planning successful
+Planning problems:  64%|███████████████████████████████████████████████████████████████████████████████████████████████████▏                                                       | 16/25 [01:38<00:53,  5.89s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_24.jpg
+INFO:__main__:Goal: assembly blue_battery to the ventilator ,assembly green_pump to the ventilator and assembly green_regulator to the ventilator
+(define (problem picture_24)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        blue_battery green_pump green_regulator - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear green_pump)
+        (clear blue_battery)
+        (clear green_regulator)
+        (part_at green_pump table)
+        (part_at green_regulator buffer_placement)
+        (part_at blue_battery table)
+    )
+    
+    (:goal
+(and
+            (part_at blue_battery battery_placement)
+            (part_at green_pump pump_placement)
+            (part_at green_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['blue_battery', 'green_pump', 'green_regulator']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'blue_battery', 'battery_placement')
+  2. ('assemble', 'green_pump', 'pump_placement')
+  3. ('assemble', 'green_regulator', 'regulator_placement')
+
+规划的结果:  [('pick', 'blue_battery', 'table'), ('moveto', 'table', 'battery_placement'), ('place', 'blue_battery', 'battery_placement'), ('moveto', 'battery_placement', 'table'), ('pick', 'green_pump', 'table'), ('moveto', 'table', 'pump_placement'), ('place', 'green_pump', 'pump_placement'), ('moveto', 'pump_placement', 'buffer_placement'), ('pick', 'green_regulator', 'buffer_placement'), ('moveto', 'buffer_placement', 'regulator_placement'), ('place', 'green_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_24.jpg: Planning successful
+Planning problems:  68%|█████████████████████████████████████████████████████████████████████████████████████████████████████████▍                                                 | 17/25 [01:44<00:47,  5.95s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_25.jpg
+INFO:__main__:Goal: assembly blue_battery to the ventilator and assembly green_regulator to the ventilator
+(define (problem picture_25)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        blue_battery green_regulator - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear blue_battery)
+        (clear green_regulator)
+        (part_at blue_battery table)
+        (part_at green_regulator buffer_placement)
+    )
+    
+    (:goal
+(and
+            (part_at blue_battery battery_placement)
+            (part_at green_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['blue_battery', 'green_regulator']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'blue_battery', 'battery_placement')
+  2. ('assemble', 'green_regulator', 'regulator_placement')
+
+规划的结果:  [('pick', 'blue_battery', 'table'), ('moveto', 'table', 'battery_placement'), ('place', 'blue_battery', 'battery_placement'), ('moveto', 'battery_placement', 'buffer_placement'), ('pick', 'green_regulator', 'buffer_placement'), ('moveto', 'buffer_placement', 'regulator_placement'), ('place', 'green_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_25.jpg: Planning successful
+Planning problems:  72%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████▌                                           | 18/25 [01:49<00:39,  5.70s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_3.jpg
+INFO:__main__:Goal: assembly red_pump to the ventilator and assembly green_regulator to the ventilator
+(define (problem picture_3)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+         red_pump green_regulator - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear red_pump)
+        (clear green_regulator)
+        (part_at red_pump table)
+        (part_at green_regulator buffer_placement)
+    )
+    
+    (:goal
+(and
+            (part_at red_pump pump_placement)
+            (part_at green_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['red_pump', 'green_regulator']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'red_pump', 'pump_placement')
+  2. ('assemble', 'green_regulator', 'regulator_placement')
+
+规划的结果:  [('pick', 'red_pump', 'table'), ('moveto', 'table', 'pump_placement'), ('place', 'red_pump', 'pump_placement'), ('moveto', 'pump_placement', 'buffer_placement'), ('pick', 'green_regulator', 'buffer_placement'), ('moveto', 'buffer_placement', 'regulator_placement'), ('place', 'green_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_3.jpg: Planning successful
+Planning problems:  76%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊                                     | 19/25 [01:54<00:32,  5.49s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_4.jpg
+INFO:__main__:Goal: assembly red_battery to the ventilator , assembly green_pump to the ventilator and assembly blue_regulator to the ventilator
+(define (problem picture_4)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        red_battery green_pump blue_regulator - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear red_battery)
+        (clear green_pump)
+        (clear blue_regulator)
+        (part_at blue_regulator table)
+        (part_at green_pump table)
+        (part_at red_battery buffer_placement)
+    )
+    
+    (:goal
+(and
+            (part_at red_battery battery_placement)
+            (part_at green_pump pump_placement)
+            (part_at blue_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['red_battery', 'green_pump', 'blue_regulator']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'red_battery', 'battery_placement')
+  2. ('assemble', 'green_pump', 'pump_placement')
+  3. ('assemble', 'blue_regulator', 'regulator_placement')
+
+规划的结果:  [('moveto', 'table', 'buffer_placement'), ('pick', 'red_battery', 'buffer_placement'), ('moveto', 'buffer_placement', 'battery_placement'), ('place', 'red_battery', 'battery_placement'), ('moveto', 'battery_placement', 'table'), ('pick', 'green_pump', 'table'), ('moveto', 'table', 'pump_placement'), ('place', 'green_pump', 'pump_placement'), ('moveto', 'pump_placement', 'table'), ('pick', 'blue_regulator', 'table'), ('moveto', 'table', 'regulator_placement'), ('place', 'blue_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_4.jpg: Planning successful
+Planning problems:  80%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████                               | 20/25 [02:00<00:28,  5.71s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_5.jpg
+INFO:__main__:Goal: assembly green_pump to the ventilator and assembly green_regulator to the ventilator
+(define (problem picture_5)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+         red_battery green_pump green_regulator  - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear red_battery)
+        (clear green_pump)
+        (clear green_regulator)
+        (part_at green_pump table)
+        (part_at red_battery battery_placement)
+        (part_at green_regulator buffer_placement)
+    )
+    
+    (:goal
+(and
+            (part_at green_pump pump_placement)
+            (part_at green_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['red_battery', 'green_pump', 'green_regulator']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'green_pump', 'pump_placement')
+  2. ('assemble', 'green_regulator', 'regulator_placement')
+
+规划的结果:  [('pick', 'green_pump', 'table'), ('moveto', 'table', 'pump_placement'), ('place', 'green_pump', 'pump_placement'), ('moveto', 'pump_placement', 'buffer_placement'), ('pick', 'green_regulator', 'buffer_placement'), ('moveto', 'buffer_placement', 'regulator_placement'), ('place', 'green_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_5.jpg: Planning successful
+Planning problems:  84%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▏                        | 21/25 [02:06<00:23,  5.77s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_6.jpg
+INFO:__main__:Goal: assembly red_pump to the ventilator and assembly blue_regulator to the ventilator
+(define (problem picture_6)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        red_pump blue_regulator blue_battery - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear red_pump)
+        (clear blue_regulator)
+        (clear blue_battery)
+        (part_at blue_regulator table)
+        (part_at red_pump buffer_placement)
+        (part_at blue_battery battery_placement)
+    )
+    
+    (:goal
+(and
+            (part_at red_pump pump_placement)
+            (part_at blue_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['red_pump', 'blue_regulator', 'blue_battery']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'red_pump', 'pump_placement')
+  2. ('assemble', 'blue_regulator', 'regulator_placement')
+
+规划的结果:  [('moveto', 'table', 'buffer_placement'), ('pick', 'red_pump', 'buffer_placement'), ('moveto', 'buffer_placement', 'pump_placement'), ('place', 'red_pump', 'pump_placement'), ('moveto', 'pump_placement', 'table'), ('pick', 'blue_regulator', 'table'), ('moveto', 'table', 'regulator_placement'), ('place', 'blue_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_6.jpg: Planning successful
+Planning problems:  88%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍                  | 22/25 [02:12<00:17,  5.79s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_7.jpg
+INFO:__main__:Goal: assembly blue_battery to the ventilator , assembly red_pump to the ventilator and assembly blue_regulator to the ventilator
+(define (problem picture_7)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        blue_regulator blue_battery red_pump - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear blue_battery)
+        (clear blue_regulator)
+        (clear red_pump)
+        (part_at blue_battery buffer_placement)
+        (part_at blue_regulator table)
+        (part_at red_pump table)
+    )
+    
+    (:goal
+(and
+            (part_at blue_battery battery_placement)
+            (part_at red_pump pump_placement)
+            (part_at blue_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['blue_regulator', 'blue_battery', 'red_pump']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'blue_battery', 'battery_placement')
+  2. ('assemble', 'red_pump', 'pump_placement')
+  3. ('assemble', 'blue_regulator', 'regulator_placement')
+
+规划的结果:  [('moveto', 'table', 'buffer_placement'), ('pick', 'blue_battery', 'buffer_placement'), ('moveto', 'buffer_placement', 'battery_placement'), ('place', 'blue_battery', 'battery_placement'), ('moveto', 'battery_placement', 'table'), ('pick', 'red_pump', 'table'), ('moveto', 'table', 'pump_placement'), ('place', 'red_pump', 'pump_placement'), ('moveto', 'pump_placement', 'table'), ('pick', 'blue_regulator', 'table'), ('moveto', 'table', 'regulator_placement'), ('place', 'blue_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_7.jpg: Planning successful
+Planning problems:  92%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌            | 23/25 [02:18<00:11,  5.90s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_8.jpg
+INFO:__main__:Goal: assembly blue_battery to the ventilator , assembly green_pump to the ventilator and assembly green_regulator to the ventilator
+(define (problem picture_8)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        blue_battery green_pump green_regulator - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear green_pump)
+        (clear blue_battery)
+        (clear green_regulator)
+        (part_at green_pump table)
+        (part_at green_regulator buffer_placement)
+        (part_at blue_battery table)
+    )
+    
+    (:goal
+(and
+            (part_at blue_battery battery_placement)
+            (part_at green_pump pump_placement)
+            (part_at green_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['blue_battery', 'green_pump', 'green_regulator']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'blue_battery', 'battery_placement')
+  2. ('assemble', 'green_pump', 'pump_placement')
+  3. ('assemble', 'green_regulator', 'regulator_placement')
+
+规划的结果:  [('pick', 'blue_battery', 'table'), ('moveto', 'table', 'battery_placement'), ('place', 'blue_battery', 'battery_placement'), ('moveto', 'battery_placement', 'table'), ('pick', 'green_pump', 'table'), ('moveto', 'table', 'pump_placement'), ('place', 'green_pump', 'pump_placement'), ('moveto', 'pump_placement', 'buffer_placement'), ('pick', 'green_regulator', 'buffer_placement'), ('moveto', 'buffer_placement', 'regulator_placement'), ('place', 'green_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_8.jpg: Planning successful
+Planning problems:  96%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊      | 24/25 [02:24<00:05,  5.98s/it]INFO:__main__:Processing image: /data/public/real_ariac/data_test/fault_placement/picture_9.jpg
+INFO:__main__:Goal: assembly blue_battery to the ventilator and assembly blue_regulator to the ventilator
+(define (problem picture_9)
+    (:domain ariac)
+    
+    (:objects
+table pump_placement regulator_placement battery_placement buffer_placement - location
+        blue_regulator blue_battery red_pump - part
+    )
+    
+    (:init
+(robot_at table)
+        (handempty)        
+        (clear blue_battery)
+        (clear blue_regulator)
+        (clear red_pump)
+        (part_at blue_battery buffer_placement)
+        (part_at blue_regulator table)
+        (part_at red_pump pump_placement)
+    )
+    
+    (:goal
+(and
+            (part_at blue_battery battery_placement)
+            (part_at blue_regulator regulator_placement)
+        )
+    )
+)
+解析到的对象:
+  Parts: ['blue_regulator', 'blue_battery', 'red_pump']
+  Locations: ['table', 'pump_placement', 'regulator_placement', 'battery_placement', 'buffer_placement']
+
+解析到的目标任务:
+  1. ('assemble', 'blue_battery', 'battery_placement')
+  2. ('assemble', 'blue_regulator', 'regulator_placement')
+
+规划的结果:  [('moveto', 'table', 'buffer_placement'), ('pick', 'blue_battery', 'buffer_placement'), ('moveto', 'buffer_placement', 'battery_placement'), ('place', 'blue_battery', 'battery_placement'), ('moveto', 'battery_placement', 'table'), ('pick', 'blue_regulator', 'table'), ('moveto', 'table', 'regulator_placement'), ('place', 'blue_regulator', 'regulator_placement')]
+INFO:__main__:✓ picture_9.jpg: Planning successful
+Planning problems: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 25/25 [02:30<00:00,  6.02s/it]
+INFO:__main__:
+============================================================
+INFO:__main__:PLANNING RESULTS:
+INFO:__main__:============================================================
+INFO:__main__:Total problems: 25
+INFO:__main__:Successful: 25 (100.0%)
+INFO:__main__:Failed: 0 (0.0%)
+INFO:__main__:Results saved to: ./planning_results
+INFO:__main__:PDDL for scoring saved to: ./planning_results/pddl_for_scoring
+
+批处理完成!
+总问题数: 25
+成功: 25
+失败: 0

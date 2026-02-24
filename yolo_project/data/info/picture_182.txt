@@ -1,0 +1,2 @@
+red_battery
+red_pump

@@ -1,0 +1,2 @@
+red_pump
+green_regulator

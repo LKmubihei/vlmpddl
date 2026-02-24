@@ -1,0 +1,502 @@
+[
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_79.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly blue_pump to the ventilator, assembly green_regulator to the ventilator, and assembly blue_battery to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_battery blue_pump green_regulator - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear blue_pump)\n        (clear green_regulator)\n        (clear blue_battery)\n        (part_at blue_pump table)\n        (part_at blue_battery table)\n        (part_at green_regulator table)\n    )\n\n(:goal\n        (and\n            (part_at blue_pump pump_placement)\n            (part_at green_regulator regulator_placement)\n            (part_at blue_battery battery_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_202.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly green_pump to the ventilator and assembly green_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        green_battery blue_battery red_battery green_pump green_regulator  - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear green_battery)\n        (clear blue_battery)\n        (clear red_battery)\n        (clear green_pump)\n        (clear green_regulator)\n        (part_at blue_battery table)\n        (part_at green_battery table)\n        (part_at green_pump table)\n        (part_at green_regulator table)\n        (part_at red_battery battery_placement)\n\n    )\n\n(:goal\n        (and\n            (part_at green_pump pump_placement)\n            (part_at green_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_354.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly blue_battery to the ventilator, assembly red_pump to the ventilator, and assembly green_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_battery red_pump green_regulator green_battery - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear green_battery)\n        (clear green_regulator)\n        (clear blue_battery)\n        (on green_regulator red_pump)\n        (part_at blue_battery table)\n        (part_at red_pump table)\n        (part_at green_battery table)\n    )\n\n(:goal\n(and\n            (part_at blue_battery battery_placement)\n            (part_at red_pump pump_placement)\n            (part_at green_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_349.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly green_pump to the ventilator and assembly red_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        red_regulator green_pump blue_battery red_battery - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear red_regulator)\n        (clear blue_battery)\n        (clear red_battery)\n        (clear green_pump)\n        (part_at green_pump table)\n        (part_at blue_battery table)\n        (part_at red_regulator table)\n        (part_at red_battery battery_placement)\n    )\n\n(:goal\n(and\n            (part_at green_pump pump_placement)\n            (part_at red_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_325.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly blue_battery to the ventilator and assembly green_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_battery green_regulator - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear blue_battery)\n        (clear green_regulator)\n        (part_at blue_battery table)\n        (part_at green_regulator buffer_placement)\n    )\n\n(:goal\n(and\n            (part_at blue_battery battery_placement)\n            (part_at green_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_64.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly blue_pump to the ventilator, assembly red_regulator to the ventilator, and assembly red_battery to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        red_battery blue_pump red_regulator - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear red_battery)\n        (clear red_regulator)\n        (clear blue_pump)\n        (part_at red_battery table)\n        (part_at blue_pump table)\n        (part_at red_regulator table)\n    )\n\n(:goal\n        (and\n            (part_at blue_pump pump_placement)\n            (part_at red_regulator regulator_placement)\n            (part_at red_battery battery_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_72.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly blue_pump to the ventilator, assembly red_regulator to the ventilator, and assembly blue_battery to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_battery blue_pump red_regulator - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear blue_pump)\n        (clear blue_battery)\n        (clear red_regulator)\n        (part_at blue_pump table)\n        (part_at blue_battery table)\n        (part_at red_regulator table)\n    )\n\n(:goal\n        (and\n            (part_at blue_pump pump_placement)\n            (part_at red_regulator regulator_placement)\n            (part_at blue_battery battery_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_373.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_pump to the ventilator and assembly green_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_battery red_pump green_battery red_battery green_regulator - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear blue_battery)\n        (clear green_battery)\n        (clear red_battery)\n        (clear green_regulator)\n        (on green_regulator red_pump)\n        (part_at red_battery battery_placement)\n        (part_at green_battery table)\n        (part_at blue_battery table)\n        (part_at red_pump table)\n    )\n\n(:goal\n(and\n            (part_at red_pump pump_placement)\n            (part_at green_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_333.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly blue_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_regulator - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear blue_regulator)\n        (part_at blue_regulator table)\n    )\n\n(:goal\n(and\n            (part_at blue_regulator pump_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_309.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly blue_battery to the ventilator and assembly blue_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_regulator blue_battery red_pump - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear blue_battery)\n        (clear blue_regulator)\n        (clear red_pump)\n        (part_at blue_battery buffer_placement)\n        (part_at blue_regulator table)\n        (part_at red_pump pump_placement)\n    )\n\n(:goal\n(and\n            (part_at blue_battery battery_placement)\n            (part_at blue_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_82.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly blue_pump to the ventilator, assembly green_regulator to the ventilator, and assembly blue_battery to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_battery blue_pump green_regulator - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear blue_pump)\n        (clear green_regulator)\n        (clear blue_battery)\n        (part_at blue_pump table)\n        (part_at blue_battery table)\n        (part_at green_regulator table)\n    )\n\n(:goal\n        (and\n            (part_at blue_pump pump_placement)\n            (part_at green_regulator regulator_placement)\n            (part_at blue_battery battery_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_30.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly blue_pump to the ventilator and assembly red_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        red_regulator green_regulator blue_pump - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear green_regulator)\n        (clear red_regulator)\n        (part_at green_regulator table)\n        (on red_regulator blue_pump)\n        (part_at blue_pump table)\n    )\n\n(:goal\n        (and\n            (part_at blue_pump pump_placement)\n            (part_at red_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_390.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_pump to the ventilator and assembly green_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        green_battery red_battery blue_battery green_regulator red_pump - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear green_battery)\n        (clear red_battery)\n        (clear blue_battery)\n        (on blue_battery red_pump)\n        (clear green_regulator)\n        (part_at green_battery table)\n        (part_at red_battery table)\n        (part_at green_regulator table)\n        (part_at red_pump table)\n    )\n\n(:goal\n(and\n            (part_at red_pump pump_placement)\n            (part_at green_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_328.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_pump to the ventilator, assembly red_battery to the ventilator, and assembly blue_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        red_battery blue_regulator red_pump - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear red_battery)\n        (clear blue_regulator)\n        (clear red_pump)\n        (part_at red_pump table)\n        (part_at blue_regulator table)\n        (part_at red_battery table)\n    )\n\n(:goal\n(and\n            (part_at red_pump pump_placement)\n            (part_at red_battery battery_placement)\n            (part_at blue_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_18.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_battery to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        red_battery green_battery blue_battery - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear red_battery)\n        (clear green_battery)\n        (clear blue_battery)\n        (part_at blue_battery table)\n        (part_at green_battery table)\n        (part_at red_battery table)\n    )\n\n(:goal\n        (and\n            (part_at red_battery battery_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_321.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_pump to the ventilator and assembly green_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        red_pump green_regulator blue_battery  - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear green_regulator)\n        (clear red_pump)\n        (clear blue_battery)\n        (part_at green_regulator table)\n        (part_at red_pump buffer_placement)\n        (part_at blue_battery battery_placement)\n    )\n\n(:goal\n(and\n            (part_at red_pump pump_placement)\n            (part_at green_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_77.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly blue_pump to the ventilator, assembly green_regulator to the ventilator, and assembly blue_battery to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_battery blue_pump green_regulator - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear blue_pump)\n        (part_at blue_pump table)\n        (part_at blue_battery table)\n        (part_at green_regulator table)\n        (clear blue_battery)\n        (clear green_regulator)\n    )\n\n(:goal\n        (and\n            (part_at blue_pump pump_placement)\n            (part_at green_regulator regulator_placement)\n            (part_at blue_battery battery_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_86.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly blue_pump to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_pump red_pump green_pump - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear blue_pump)\n        (clear red_pump)\n        (clear green_pump)\n        (part_at blue_pump table)\n        (part_at green_pump table)\n        (part_at red_pump table)\n    )\n\n(:goal\n        (and\n            (part_at blue_pump pump_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_71.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly blue_pump to the ventilator, assembly red_regulator to the ventilator, and assembly blue_battery to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_battery blue_pump red_regulator - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear blue_pump)\n        (clear blue_battery)\n        (clear red_regulator)\n        (part_at blue_pump table)\n        (part_at blue_battery table)\n        (part_at red_regulator table)\n    )\n\n(:goal\n        (and\n            (part_at blue_pump pump_placement)\n            (part_at red_regulator regulator_placement)\n            (part_at blue_battery battery_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_380.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_battery to the ventilator, assembly red_pump to the ventilator, and assembly blue_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        red_battery blue_regulator red_pump - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear red_battery)\n        (clear blue_regulator)\n        (part_at red_battery table)\n        (part_at red_pump table)\n        (on blue_regulator red_pump)\n    )\n\n(:goal\n(and\n            (part_at red_battery battery_placement)\n            (part_at red_pump pump_placement)\n            (part_at blue_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_84.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly blue_pump to the ventilator and assembly blue_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_regulator blue_pump green_regulator - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear blue_pump)\n        (clear green_regulator)\n        (clear blue_regulator)\n        (part_at blue_pump table)\n        (part_at blue_regulator table)\n        (part_at green_regulator table)\n    )\n\n(:goal\n        (and\n            (part_at blue_pump pump_placement)\n            (part_at blue_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_353.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly green_battery to the ventilator, assembly red_pump to the ventilator, and assembly green_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        green_regulator green_battery red_pump blue_battery - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear green_battery)\n        (clear green_regulator)\n        (clear blue_battery)\n        (on green_regulator red_pump)\n        (part_at green_battery table)\n        (part_at blue_battery table)\n        (part_at red_pump table)\n    )\n\n(:goal\n(and\n            (part_at green_battery battery_placement)\n            (part_at red_pump pump_placement)\n            (part_at green_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_207.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly green_pump to the ventilator, assembly green_regulator to the ventilator, and assembly blue_battery to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n         green_pump green_regulator blue_battery - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear green_pump)\n        (clear green_regulator)\n        (clear blue_battery)\n        (part_at green_pump table)\n        (part_at green_regulator buffer_placement)\n        (part_at blue_battery table)\n    )\n\n(:goal\n        (and\n            (part_at green_pump pump_placement)\n            (part_at green_regulator regulator_placement)\n            (part_at blue_battery battery_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_199.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_pump to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_battery red_pump blue_battery_1 red_pump_1 - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear red_pump)\n        (clear blue_battery)\n        (clear blue_battery_1)\n        (clear red_pump_1)\n        (part_at red_pump buffer_placement)\n        (part_at blue_battery battery_placement)\n        (part_at blue_battery_1 table)\n        (part_at red_pump_1 table)\n    )\n\n(:goal\n        (and\n            (part_at red_pump pump_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_61.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly blue_pump to the ventilator, assembly red_regulator to the ventilator, and assembly red_battery to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        red_battery blue_pump red_regulator - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear red_battery)\n        (clear red_regulator)\n        (clear blue_pump)\n        (part_at red_battery table)\n        (part_at blue_pump table)\n        (part_at red_regulator table)\n    )\n\n(:goal\n        (and\n            (part_at blue_pump pump_placement)\n            (part_at red_regulator regulator_placement)\n            (part_at red_battery battery_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_198.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly green_regulator to the ventilator and assembly blue_battery to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        green_pump red_pump green_regulator green_battery  blue_battery  - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear green_pump)\n        (clear green_regulator)\n        (clear green_battery)\n        (clear blue_battery)\n        (clear red_pump)\n        (part_at green_pump table)\n        (part_at red_pump pump_placement)\n        (part_at green_regulator table)\n        (part_at green_battery table)\n        (part_at blue_battery table)\n    )\n\n(:goal\n        (and\n\n            (part_at green_regulator regulator_placement)\n            (part_at blue_battery battery_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_304.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_battery to the ventilator, assembly green_pump to the ventilator, and assembly blue_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        red_battery green_pump blue_regulator - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear red_battery)\n        (clear green_pump)\n        (clear blue_regulator)\n        (part_at blue_regulator table)\n        (part_at green_pump table)\n        (part_at red_battery buffer_placement)\n    )\n\n(:goal\n(and\n            (part_at red_battery battery_placement)\n            (part_at green_pump pump_placement)\n            (part_at blue_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_389.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_pump to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        green_battery blue_battery red_pump green_regulator green_regulator_1 red_battery - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear green_battery)\n        (clear blue_battery)\n        (on green_regulator_1 red_pump)\n        (clear green_regulator)\n        (clear green_regulator_1)\n        (clear red_battery)\n        (part_at red_pump table)\n        (part_at green_battery table)\n        (part_at green_regulator regulator_placement)\n        (part_at blue_battery battery_placement)\n        (part_at red_battery table)\n    )\n\n(:goal\n(and\n            (part_at red_pump pump_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_320.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly green_pump to the ventilator and assembly green_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_regulator green_pump green_regulator - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear blue_regulator)\n        (clear green_pump)\n        (clear green_regulator)\n        (part_at green_pump table)\n        (part_at blue_regulator table)\n        (part_at green_regulator buffer_placement)\n    )\n\n(:goal\n(and\n            (part_at green_pump pump_placement)\n            (part_at green_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_336.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_pump to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n         blue_battery green_regulator red_pump - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear red_pump)\n        (clear blue_battery)\n        (clear green_regulator)\n        (part_at red_pump table)\n        (part_at blue_battery battery_placement)\n        (part_at green_regulator regulator_placement)\n    )\n\n(:goal\n(and\n            (part_at red_pump pump_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_21.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_pump to the ventilator and assembly green_battery to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        red_pump green_battery blue_pump - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear green_battery)\n        (clear red_pump)\n        (clear blue_pump)\n        (part_at blue_pump table)\n        (part_at green_battery table)\n        (part_at red_pump table)\n    )\n\n(:goal\n        (and\n            (part_at red_pump pump_placement)\n            (part_at green_battery battery_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_388.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly green_pump to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        green_battery blue_battery green_pump green_regulator green_regulator_1 blue_regulator - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear green_battery)\n        (clear blue_battery)\n        (on blue_regulator green_pump)\n        (clear green_regulator)\n        (clear green_regulator_1)\n        (clear blue_regulator)\n        (part_at green_pump table)\n        (part_at green_battery table)\n        (part_at green_regulator regulator_placement)\n        (part_at green_regulator_1 table)\n        (part_at blue_battery battery_placement)\n    )\n\n(:goal\n(and\n            (part_at green_pump pump_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_193.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_pump to the ventilator and assembly green_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        red_pump green_regulator - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear red_pump)\n        (clear green_regulator)\n        (part_at red_pump table)\n        (part_at green_regulator buffer_placement)\n    )\n\n(:goal\n        (and\n            (part_at red_pump pump_placement)\n            (part_at green_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_395.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_pump to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n       blue_battery blue_battery_1 red_pump green_regulator green_regulator_1 - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear blue_battery_1)\n        (clear blue_battery)\n        (clear green_regulator)\n        (clear green_regulator_1)\n        (on green_regulator_1 red_pump)\n        (part_at red_pump table)\n        (part_at blue_battery_1 table)\n        (part_at blue_battery battery_placement)\n        (part_at green_regulator regulator_placement)\n    )\n\n(:goal\n(and\n            (part_at red_pump pump_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_183.png<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_pump to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        red_battery blue_regulator red_pump - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear red_battery)\n        (clear blue_regulator)\n        (clear red_pump)\n        (part_at red_pump table)\n        (part_at blue_regulator regulator_placement)\n        (part_at red_battery battery_placement)\n    )\n\n(:goal\n        (and\n            (part_at red_pump pump_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_212.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_pump to the ventilator and assembly green_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_battery red_pump green_battery red_battery green_regulator - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear blue_battery)\n        (clear green_battery)\n        (clear red_battery)\n        (clear green_regulator)\n        (on green_regulator red_pump)\n        (part_at red_battery battery_placement)\n        (part_at green_battery table)\n        (part_at blue_battery table)\n        (part_at red_pump table)\n    )\n\n(:goal\n        (and\n            (part_at red_pump pump_placement)\n            (part_at green_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_318.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly green_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_regulator green_regulator - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear blue_regulator)\n        (clear green_regulator)\n        (part_at blue_regulator table)\n        (part_at green_regulator buffer_placement)\n    )\n\n(:goal\n(and\n            (part_at green_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_371.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly green_pump to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        green_battery blue_battery red_pump green_pump green_regulator blue_regulator - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear green_battery)\n        (clear blue_battery)\n        (clear red_pump)\n        (clear green_pump)\n        (clear green_regulator)\n        (clear blue_regulator)\n        (part_at red_pump table)\n        (part_at green_battery table)\n        (part_at green_pump table)\n        (part_at blue_regulator table)\n        (part_at blue_battery battery_placement)\n        (part_at green_regulator regulator_placement)\n    )\n\n(:goal\n(and\n            (part_at green_pump pump_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_200.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_pump to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_battery blue_battery_1 green_battery red_pump green_regulator green_regulator_1 - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)\n        (clear blue_battery)\n        (clear blue_battery_1)\n        (clear green_battery)\n        (clear green_regulator)\n        (clear green_regulator_1)\n        (on green_regulator_1 red_pump)\n        (part_at red_pump table)\n        (part_at blue_battery battery_placement)\n        (part_at blue_battery_1 table)\n        (part_at green_battery table)\n        (part_at green_regulator regulator_placement)\n\n    )\n\n(:goal\n        (and\n            (part_at red_pump pump_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_305.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly green_pump to the ventilator and assembly green_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n         red_battery green_pump green_regulator  - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear red_battery)\n        (clear green_pump)\n        (clear green_regulator)\n        (part_at green_pump table)\n        (part_at red_battery battery_placement)\n        (part_at green_regulator buffer_placement)\n    )\n\n(:goal\n(and\n            (part_at green_pump pump_placement)\n            (part_at green_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_381.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly green_battery to the ventilator, assembly red_pump to the ventilator, and assembly blue_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        red_pump blue_regulator green_battery - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear green_battery)\n        (clear blue_regulator)\n        (part_at green_battery table)\n        (part_at red_pump table)\n        (on blue_regulator red_pump)\n    )\n\n(:goal\n(and\n            (part_at green_battery battery_placement)\n            (part_at red_pump pump_placement)\n            (part_at blue_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_378.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly green_battery to the ventilator, assembly green_pump to the ventilator, and assembly blue_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        green_battery blue_regulator green_pump - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear green_battery)\n        (on green_battery blue_regulator)\n        (clear green_pump)\n        (part_at green_pump table)\n        (part_at blue_regulator table)\n    )\n\n(:goal\n(and\n            (part_at green_battery battery_placement)\n            (part_at green_pump pump_placement)\n            (part_at blue_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_397.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_pump to the ventilator and assembly green_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        red_battery blue_battery red_pump green_regulator - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear red_battery)\n        (clear blue_battery)\n        (on green_regulator red_pump)\n        (clear green_regulator)\n        (part_at red_pump table)\n        (part_at blue_battery table)\n        (part_at red_battery battery_placement)\n    )\n\n(:goal\n(and\n            (part_at red_pump pump_placement)\n            (part_at green_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_191.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_pump to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_battery green_battery red_battery red_pump green_regulator green_regulator_1 - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear green_battery)\n        (clear red_battery)\n        (clear green_regulator_1)\n        (clear green_regulator)\n        (clear blue_battery)\n        (on green_regulator_1 red_pump)\n        (part_at red_pump table)\n        (part_at green_battery table)\n        (part_at red_battery table)\n        (part_at blue_battery battery_placement)\n        (part_at green_regulator regulator_placement)\n    )\n\n(:goal\n        (and\n            (part_at red_pump pump_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_330.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_battery to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        red_battery - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear red_battery)\n        (part_at red_battery table)\n    )\n\n(:goal\n(and\n            (part_at red_battery battery_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_356.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly green_battery to the ventilator, assembly red_pump to the ventilator, and assembly green_regulator to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        green_battery red_pump green_regulator blue_battery blue_regulator - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear green_battery)\n        (clear green_regulator)\n        (clear blue_regulator)\n        (clear blue_battery)\n        (on blue_battery red_pump)\n        (part_at green_battery table)\n        (part_at red_pump table)\n        (part_at blue_regulator table)\n        (part_at green_regulator table)\n    )\n\n(:goal\n(and\n            (part_at green_battery battery_placement)\n            (part_at red_pump pump_placement)\n            (part_at green_regulator regulator_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_400.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_pump to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_battery blue_battery_1 red_pump green_regulator green_regulator_1 - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear blue_battery_1)\n        (clear green_regulator)\n        (clear green_regulator_1)\n        (clear blue_battery)\n        (on green_regulator_1 red_pump)\n        (part_at red_pump table)\n        (part_at blue_battery_1 table)\n        (part_at blue_battery battery_placement)\n        (part_at green_regulator regulator_placement)\n    )\n\n(:goal\n(and\n            (part_at red_pump pump_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_201.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_pump to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        green_battery blue_battery red_pump green_pump green_regulator blue_regulator - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear green_battery)\n        (clear blue_battery)\n        (clear red_pump)\n        (clear green_pump)\n        (clear green_regulator)\n        (clear blue_regulator)\n        (part_at red_pump table)\n        (part_at green_battery table)\n        (part_at green_pump table)\n        (part_at blue_regulator table)\n        (part_at blue_battery battery_placement)\n        (part_at green_regulator regulator_placement)\n\n    )\n\n(:goal\n        (and\n            (part_at red_pump pump_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_387.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly red_pump to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\ntable pump_placement regulator_placement battery_placement buffer_placement - location\n        red_battery blue_battery green_regulator red_pump blue_regulator - part\n    )\n\n(:init\n(robot_at table)\n        (handempty)        \n        (clear red_battery)\n        (clear blue_battery)\n        (clear green_regulator)\n        (clear blue_regulator)\n        (on blue_regulator red_pump)\n        (part_at red_pump table)\n        (part_at blue_battery battery_placement)\n        (part_at red_battery table)\n        (part_at green_regulator regulator_placement)\n    )\n\n(:goal\n(and\n            (part_at red_pump pump_placement)\n        )\n    )"
+      }
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "value": "<|vision_start|>/root/Plan/vlmpddl/pddl_data/real_pictures/picture_78.jpg<|vision_end|>Based on the given domain and predicate definitions:\n\n(define (domain ariac)\n  (:requirements :strips :typing :adl)\n  (:types\n    part location - object\n  )\n\n  (:predicates\n    (robot_at ?l - location)      ; robot is at location l\n    (part_at ?p - part ?l - location)  ; part p is at location l\n    (on ?top - part ?bottom - object)  ; part top is stacked on object bottom\n    (clear ?x - object)           ; object x has nothing on top, can be picked or stacked on\n    (holding ?p - part)           ; robot is holding part p\n    (handempty)                   ; robot is not holding anything\n  )\n)\n\n, and the image:\n\nAnalyze the objects and their corresponding states in the image.\n\nGoal: assembly blue_pump to the ventilator, assembly green_regulator to the ventilator, and assembly blue_battery to the ventilator.If there are the same parts, add the suffix '_1' to the name of the second part. Please output EXACTLY three PDDL sections in order: (:objects ...), (:init ...), (:goal ...). Do not include any description or extra text."
+      },
+      {
+        "value": "(:objects\n        table pump_placement regulator_placement battery_placement buffer_placement - location\n        blue_battery blue_pump green_regulator - part\n    )\n\n(:init\n        (robot_at table)\n        (handempty)        \n        (clear blue_pump)\n        (clear green_regulator)\n        (clear blue_battery)\n        (part_at blue_pump table)\n        (part_at blue_battery table)\n        (part_at green_regulator table)\n    )\n\n(:goal\n        (and\n            (part_at blue_pump pump_placement)\n            (part_at green_regulator regulator_placement)\n            (part_at blue_battery battery_placement)\n        )\n    )"
+      }
+    ]
+  }
+]
